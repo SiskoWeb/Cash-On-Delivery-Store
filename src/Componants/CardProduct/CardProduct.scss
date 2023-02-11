@@ -1,0 +1,115 @@
+@use "../../Variables" as * ;
+
+
+
+.icard{
+    position: relative;
+
+transition:all 0.3s linear;
+
+
+box-shadow: 1px 1px 1.5px -1px rgba(142, 142, 142, 0.75);
+-webkit-box-shadow: 1px 1px 1.5px -1px rgba(142, 142, 142, 0.75);
+-moz-box-shadow: 1px 1px 1.5px -1px rgba(142, 142, 142, 0.75);
+background-color: white;
+padding: 20px 10px;
+}
+.icard:hover .buy{
+    transform: scale(1.1)
+
+}
+.card-product{
+    width:170px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+
+
+justify-content: center;
+border-radius: 5px;
+border: none;
+align-items: center;
+z-index: 1;
+}
+.img-card{
+    height: 100px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.img-card img{
+      height: 100px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+max-height: 100%;
+    border-radius: 25px;
+  
+}
+.text{
+    align-items: center;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    gap: 10px;
+    flex-direction:column
+}
+.text p{
+    padding-top: 5px;
+    max-width:100px;
+   
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+color: black;
+font-weight: 700;
+text-align: center;
+font-size: 12px;
+}
+.text .category{
+    color: green;
+    text-align: center;
+}
+.text h3{
+
+    color: #CC0000;
+}
+.buy{
+    border: none;
+    background-color: $Main-Color;
+    color: white;
+    border-radius: 10%;
+    height: 20px;
+    width: 80px;
+text-align: center;
+
+cursor:pointer;
+bottom: 0;
+z-index: 2;
+transition: all .3s linear;
+
+left: 0;
+}
+/* .buy:hover{
+transform: translateY(-4px);
+} */
+
+@keyframes buyAnime {
+    0%{
+        transform: translateY(-1);  
+    }
+    50%{
+        transform: translateY(-2);  
+    }
+    100%{
+        transform: translateY(-4);  
+    }
+}
+
+.wishlist{
+    position: absolute;
+    top: -18% ;
+    right: 20%;
+}

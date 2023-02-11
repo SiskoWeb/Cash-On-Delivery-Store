@@ -1,0 +1,101 @@
+
+// //-=--------------------
+
+//   const UploadImg=  async()=>{
+//     if(uploadedFiles === null) return;
+//     console.log(uploadedFiles)
+// const docRef =  await addDoc(collection(db, "users"), {
+//     first: "ahmed",
+//     last: "Lovelacssade",
+//     born: 1815,
+   
+//   })
+
+
+//   await Promise.all(
+//     uploadedFiles?.map((image) => {
+//         //update colication and add image to it {map if theres many images}
+//         const imgeref = ref(storage, `1/${image.name}`);
+//    uploadBytes(imgeref , image).then(async()=>{
+//        const downUrl = await getDownloadURL(imgeref)
+//        await updateDoc(doc(db, "users",docRef.id), {
+//         image:arrayUnion(downUrl)
+//          })}
+      
+//        )
+       
+//         })
+
+//   )
+
+//   setUploadedFiles([])
+//   setFileLimit(false)
+//   }
+
+
+
+
+/////////////////////
+
+
+
+//-=--------------------
+const onUpload = async ()  => {
+    console.log(images)
+    if(images === null || price === '' || discrip === '' || title === '' ) return setMsgError(true);
+console.log(images)
+const docRef =  await addDoc(collection(db, 'Products'), {
+title: title,
+discription: discrip,
+price: price,
+date: Timestamp.fromDate(new Date("December 10, 1815")), 
+})
+
+for  (let i = 0; i < data.length; i++) {
+
+//update colication and add image to it {map if theres many images}
+const   imgeref =  ref(storage, `1/${images[i].file.name}`);
+uploadBytes(imgeref , data[i].file).then(async()=>{
+const downUrl = await getDownloadURL(imgeref)
+await updateDoc(docRef, {
+image:arrayUnion(downUrl)
+})}
+
+)
+} 
+setMsgError(false);
+setUploadedFiles([])
+setFileLimit(false)
+
+};
+
+
+
+
+
+//------------------
+
+//single image
+// const UploadImg=  async()=>{
+//     if(uploadedFiles === null) return;
+//     console.log(uploadedFiles)
+// const docRef =  await addDoc(collection(db, "users"), {
+//     first: "Ada",
+//     last: "Lovelace",
+//     born: 1815,
+   
+//   })
+//  //update colication and add image to it {map if theres many images}
+//  const imgeref = ref(storage, `1/${uploadedFiles[1].name}`);
+//  const uploimg = await uploadBytes(imgeref , uploadedFiles[1]).then(async()=>{
+//      const downUrl = await getDownloadURL(imgeref)
+//      await updateDoc(doc(db, "users",docRef.id), {
+//       image:arrayUnion(downUrl)
+//        })}
+    
+//      )
+     
+
+
+//   await Promise.all(uploimg)
+//  }

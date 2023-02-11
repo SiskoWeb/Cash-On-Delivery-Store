@@ -1,0 +1,29 @@
+.home{
+    background-color: white;
+height: 100vh;
+text-align: center;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    display: flex;
+    flex-direction: column;
+    // text-transform: uppercase;
+    font-family: var(--raleway);
+    font-size: 42px;
+    font-weight: 400;
+    text-transform: capitalize;
+    h2{
+        padding-top: 20px;
+    }
+    
+}
+.list-Products{
+
+        margin-top: 50px;
+gap: 25px;
+    display: grid;
+grid-template-columns: auto auto auto auto ;
+    width: 100%;
+ 
+row-gap: 50px;
+height: 100vh;
+
+}

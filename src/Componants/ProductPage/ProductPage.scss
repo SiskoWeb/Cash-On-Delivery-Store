@@ -1,0 +1,186 @@
+
+@mixin d-flex-col($aliy,$just,$dirc,$gap){
+    display: flex;
+    justify-content: $just;
+    flex-direction: $dirc;
+align-items: $aliy;
+height: 100%;
+padding-top: 100px;
+gap:$gap  
+}
+.productPage{
+
+    @include d-flex-col(center,space-around,column,00px);
+
+    p{
+        font-family: 'Open Sans', sans-serif;
+        // font-weight: 900;
+        font-size: 30px
+        
+    }
+
+}
+
+
+.also-products{
+    @include d-flex-col(center, center,row ,20px );
+    flex-wrap: wrap;
+    padding-top: 0px !important;
+}
+
+
+// new desgn
+
+
+$Main-Color: #7EC855; 
+.Porudct-Page{
+display: flex;
+width: 100%;
+height: 100%;
+justify-content: center;
+margin-top: 100px;
+}
+
+.imgBorder{
+    min-width: 50%;
+    height: calc(100% - 20%);
+flex-basis: 60%;
+display: flex;
+align-items: center;
+justify-content: center;
+background-color: white;
+img{
+   width: 70%;
+    height: auto;
+}
+}
+.Text-Product2{
+    flex-basis: 40%;
+    display: flex;
+    flex-direction: column;
+gap: 30px;
+align-items: start;
+justify-content: space-around;
+min-width: 50%;
+
+
+height: 100%;
+ .buybtn{
+    background-color: $Main-Color;
+    border: none;
+    color: white;
+    padding: 15px 0;
+    width: 50%;
+    border-radius: 5px;
+    font-size: 25px;
+    font-family: 'Open Sans', sans-serif;
+ }
+ .title{
+    font-family: var(--raleway);
+    font-size: 30px;
+font-weight: 600;
+    white-space: nowrap;
+max-width: 100%;
+overflow: hidden;
+text-overflow: ellipsis;
+ }
+ .price{
+    font-family: var(--raleway);
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 10px;
+    span{
+        font-family: var(--roboto-condensed);
+        font-size: 18px;
+        font-weight: 700;
+    }
+ }
+ .visitor{
+  justify-self: center;
+    font-size: 25px;
+    font-family: 'Open Sans', sans-serif;
+    width: 100%;
+    text-align: center;
+    span{
+        background-color: #CC0000;
+        color: white;
+        padding: 2px 5px;
+        border-radius: 5px;
+    }
+ }
+
+}
+
+.btn-share{
+    width: 100%;
+    border: 1px rgb(93, 93, 93) solid;
+    
+  height: 50px;
+  padding: 15px;
+  position: relative;
+  border-radius: 5px;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 50px;
+text-align: center;
+
+
+  a{
+    background-color: #44c453;
+    color: white;
+    padding: 6px;
+display: flex;
+font-size: 15px;
+align-items: center;
+justify-content:center;
+    border-radius: 5px;
+    width: 120px;
+  }
+  .share{
+
+    position: absolute;
+    top: -38%;
+    background-color: white;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    left: 45%;
+    
+  }
+}
+// .discrip{
+//     border: 1px black solid;
+//     padding: 10px;
+//     height: 100px;
+ 
+// }
+@media (max-width: 767.98px) { 
+.Porudct-Page{
+
+    flex-direction: column;
+    .title{
+        font-size: 40px;
+      
+
+     }
+     .visitor{
+   
+          font-size: 20px;
+   
+        
+          span{
+      
+              padding: 2px 5px;
+           
+          }
+       }
+    }
+
+    .btn-share{
+        a{
+            font-size: 12px;
+            width: 120px;
+        }
+    }
+    
+}
