@@ -1,0 +1,14 @@
+.AdminNavBar{
+    background-color: white;
+    display: flex;
+    height: 70px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 40px;
+    .icon-bar-admin{
+        color: black;
+    
+        width: 5px;
+       
+    }
+}

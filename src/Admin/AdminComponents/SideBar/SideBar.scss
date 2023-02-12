@@ -1,0 +1,50 @@
+.active{
+    opacity: 1;
+  
+}
+
+.new-sideBar{
+    height: 100vh;
+    width: 200px;
+align-items: safe;
+    color: white;
+.title-sideBar{
+    padding: 20px;
+    color: white;
+    background-color: #2a3e4c;
+}
+.list-Links-sideBar{
+
+padding: 0 20px;
+    background-color: #2a3e4c;
+    height: 100vh;  
+    li{
+        font-size: 16px;
+        list-style: none;
+        padding: 20px 0;
+        a{
+            font-size: 12px;
+            font-family: var(--raleway);
+            color: white;
+            i{
+                font-size: 20px;
+            }
+            &:hover{
+                color: #2687FF;
+            }
+        }
+    }
+}
+
+}
+
+
+// .mobile-sidebar{
+// width:50px ;
+
+// }
+.link-item-sidebar-admin{
+display: flex;
+align-items: center;
+gap: 20px;
+}

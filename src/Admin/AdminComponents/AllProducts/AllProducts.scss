@@ -1,0 +1,63 @@
+.list-prodcuts-admin{
+    background: white;
+    height: 100%;
+    width: 100%;
+    margin-left:20px ;
+    padding: 20px;
+    display: grid;
+grid-template-columns: auto auto auto auto auto auto ;
+    gap: 10px;
+}
+
+
+.card-product-admin{
+    // width: calc(25% - 10px);
+
+    height: 150px;
+    display: flex;
+    width: 150px;
+flex-direction: column;
+//    background-color: $color-Card-Pending;
+   align-items: center;
+ 
+   color: white;
+   border-radius: 5px;
+
+}
+.img-card-product-admin{
+position: relative;
+width: 150px;
+height: 150px;
+
+img{
+    width: 100%;
+   height: 100%;
+   object-fit: cover;
+}
+}
+.actions-card-product-admin{
+position: absolute;
+color: red;
+right: 0;
+}
+.text-card-product-admin{
+    color: black;
+    
+
+    background-color: #f7f7f9;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 50px;
+padding: 5px 10px;
+
+    p{
+        font-size: 12px;
+    }
+    
+}
+.price-card-product-admin{
+    color: #f1cd5f;
+}

@@ -1,15 +1,16 @@
 import React from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react'
-import { RMIUploader } from "react-multiple-image-uploader";
-import { storage, db } from '../../FireBase/FireBase'
+
+import { storage, db } from '../../../FireBase/FireBase'
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { collection, addDoc, arrayUnion, updateDoc, doc, setDoc, Timestamp, getDocs ,serverTimestamp } from "firebase/firestore";
-import SideBar from '../SideBar/SideBar';
+
 import 'react-toastify/dist/ReactToastify.css';
-import notify from '../../hook/useNotifcation'
+import notify from '../../../hook/useNotifcation'
 import { ToastContainer, toast } from 'react-toastify';
 import './AddProduct.scss'
+import AdminNavBar from '../AdminNavBar/AdminNavBar';
 export default function AddProduct() {
   const [images, setImages] = useState([])
 
@@ -17,6 +18,7 @@ export default function AddProduct() {
   const [msgError, setMsgError] = useState(false);
   const [title, setTitle] = useState('');
   const [price, setPrice] = useState('');
+  // const [category, setCategory] = useState('');
   const [stock, setStock] = useState('');
   const [discrip, setDiscrip] = useState('');
 
@@ -77,58 +79,46 @@ export default function AddProduct() {
 
 
   return (
-    <div className='pageAdd'>
-      <SideBar />
+    <div className='admin-content-side'>
+<AdminNavBar/>
+
+<div className='add-product-component'>
+<form>
+{msgError ? <p className='remove-btn-order'>error check input </p> : null}
+<h2 class="mini-title-add-product"><i class="zmdi zmdi-info-outline mr-10"></i>about product</h2>
+<hr class="light-grey-hr"></hr>
+<label><p>Product Name</p><input type='text' value={title} onChange={(e) => setTitle(e.target.value)} placeholder='name Product'></input></label>
+
+  <div className='input-price-stock'>
+  <label>Price<input type='number' placeholder='Price' value={price} onChange={(e) => setPrice(e.target.value)}></input></label>
+
+    <label>Stock<input type='number' placeholder='quantity of stock' value={stock} onChange={(e) => setStock(e.target.value)}></input></label>
+   </div>
 
 
-      <div className='addProduct'>
-        <form>
+<label><p>Description</p><textarea type='text' value={discrip} onChange={(e) => setDiscrip(e.target.value)}></textarea></label>
 
-          {msgError ? <p>error check input </p> : null}
-          <div className='col'>
-            <div className='text'>  <p>1.Generale Info</p> </div>
+  
 
-            <div className='input'>
-              <label>1.Product Title<input type='text' value={title} onChange={(e) => setTitle(e.target.value)} placeholder='name Product'></input></label>
-              <label>Full Description<textarea type='text' value={discrip} onChange={(e) => setDiscrip(e.target.value)}></textarea></label>
-            </div></div>
-          <hr></hr>
+    
+     <h2 class="mini-title-add-product"><i class="zmdi zmdi-info-outline mr-10"></i>upload image</h2>
+     <hr class="light-grey-hr"></hr>
 
-          <div className='col'>
-            <div className='text'>  <p>2.Pricing</p> </div>
+<div className='upload-media-admin'>      <label className='labelupload-image' for="imgProducts">
+<div className='dropimages'> <p>Drop Images Here</p> </div>
+  <input className='input-image' type='file' id='imgProducts' multiple onChange={(e) => setImages(Object.values(e.target.files))}
+   disabled={fileLimit} accept=".png, .jpg, .jpeg"></input>
+</label>
+<div className='list-imgs'>  {images?.map((i) => <img src={URL.createObjectURL(i)}></img>)}</div> 
 
-            <div className='input'>
-              <label>Price<input type='number' placeholder='Price' value={price} onChange={(e) => setPrice(e.target.value)}></input></label>
-            </div></div>
-          <hr></hr>
-          <div className='col'>
-            <div className='text'>  <p>3.Stock</p> </div>
+</div>
+<hr class="light-grey-hr"></hr>
 
-            <div className='input'>
-              <label>Stock<input type='number' placeholder='quantity of stock' value={stock} onChange={(e) => setStock(e.target.value)}></input></label>
-            </div></div>
-          <hr></hr>
-          <div className='col'>
-            <div className='text'>  <p>4.Media</p> </div>
-
-            <div className='input input-img'>
-
-              <label className='labelupload-image' for="imgProducts">Choose a picture of Your Product: <div className='dropimages'> <p>Drop Images Here</p> </div>
-                <input className='input-image' type='file' id='imgProducts' multiple onChange={(e) => setImages(Object.values(e.target.files))}
-                  disabled={fileLimit} accept=".png, .jpg, .jpeg"></input>
-                <div className='list-imgs'>  {images?.map((i) => <img src={URL.createObjectURL(i)}></img>)}</div>
-              </label>
-
-              <input className='submit' type='submit' value="Save product" onClick={(e) => onUpload(e)}></input>
-            </div>
+    <input className='submit' type='submit' value="Save product" onClick={(e) => onUpload(e)}></input>
+</form>
+</div>
 
 
-
-          </div>
-
-
-        </form>
-      </div>
       <ToastContainer
         position="top-center"
         autoClose={1000}
@@ -144,3 +134,6 @@ export default function AddProduct() {
     </div>
   )
 }
+
+
+

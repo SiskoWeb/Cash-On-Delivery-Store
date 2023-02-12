@@ -16,7 +16,7 @@ WishList:localStorage.getItem("WishList")
 : [],
 }
 
-export const Reducer = (state = INITIAL_STATE , action)=>{
+export const ReducerUser = (state = INITIAL_STATE , action)=>{
 
 
     switch (action.type) {

@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 
 export default function Card2({data,setUpdate,update}) {
     const dispatcho = useDispatch()
-    const carList = useSelector(state => state.Cart)
+    const carList = useSelector(state => state.ReducerUser.Cart)
     const addCart = ()=>{
 
   

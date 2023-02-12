@@ -13,23 +13,29 @@ import axios from 'axios'
 export default function Test() {
 
 
-  const OrderSaved = useSelector(state => state.Order)
-  const ShippingInfoRedux = useSelector(state => state.ShippingInfo)
+  const OrderSaved = useSelector(state => state.ReducerUser.Order)
+  const ShippingInfoRedux = useSelector(state => state.ReducerUser.ShippingInfo)
 
 
 
   const [error, setError] = useState(false)
 
-  const [name, setName] = useState(ShippingInfoRedux[0]?.Adress.name)
-  const [adress, setAdress] = useState(ShippingInfoRedux[0]?.Adress.adress)
-  const [phone, setPhone] = useState(ShippingInfoRedux[0]?.Adress.phone)
-  const [city, setCity] = useState(ShippingInfoRedux[0]?.Adress.city)
-  const [city1, setCity1] = useState(ShippingInfoRedux?.name || 'no')
+
+  const [name, setName] = useState(ShippingInfoRedux[0]?.name)
+  const [adress, setAdress] = useState(ShippingInfoRedux[0]?.adress)
+  const [phone, setPhone] = useState(ShippingInfoRedux[0]?.phone)
+  const [city, setCity] = useState(ShippingInfoRedux[0]?.city)
+
+  // const [name, setName] = useState()
+  // const [adress, setAdress] = useState()
+  // const [phone, setPhone] = useState()
+  // const [city, setCity] = useState()
+  const [city1, setCity1] = useState()
   const [done, setDone] = useState(true)
 
 
-  const carList = useSelector(state => state.Cart)
-  const Products = useSelector(state => state.Products)
+  const carList = useSelector(state => state.ReducerUser.Cart)
+  const Products = useSelector(state => state.ReducerUser.Products)
   const [cart, setCart] = useState(carList)
   const [shippingInfo, setShippingInfo] = useState(ShippingInfoRedux)
   const [update, setUpdate] = useState(false)
@@ -39,7 +45,7 @@ export default function Test() {
 
 
   console.log(city1)
-  const totalPrice = carList.reduce((total, cartItem) => {
+  const totalPrice = carList?.reduce((total, cartItem) => {
     const item = Products?.find((i) => i.id === cartItem.id);
     return Math.floor(total + (item?.price || 0) * cartItem.quntity * 1)
   }, 0)
@@ -87,7 +93,7 @@ export default function Test() {
   }
 
 
-  const shippingPrice = 25;
+  const shippingPrice = 0;
 
 
   useEffect(() => {
@@ -104,14 +110,14 @@ export default function Test() {
       dispatcho({
         type: 'SHIPPING',
         payload: {
-          Adress: {
-            name,
-            adress,
-            phone,
-            city,
-          },
+          name,
+          adress,
+          phone,
+          city,
+        }
+        
 
-        },
+        
 
       }
       )
@@ -142,8 +148,9 @@ const onUpload = async (e) => {
       OrderId:ProductinDb.length + 1,
       shippingInfo: ShippingInfoRedux,
       Products: cart,
-      
+      totalOrder: totalPrice,
       dateOrder: serverTimestamp(), 
+      statue:'Processing'
     })
 
     await Promise.all(
@@ -249,21 +256,21 @@ if(isHrer){
 
                 <div className='info'>
                   <p>Your name</p>
-                  <p>{ShippingInfoRedux[0]?.Adress.name}</p>
+                  <p>{ShippingInfoRedux[0]?.name}</p>
                 </div>
 
                 <div className='info'>
                   <p>Phone Number</p>
-                  <p>{ShippingInfoRedux[0]?.Adress.phone}</p>
+                  <p>{ShippingInfoRedux[0]?.phone}</p>
                 </div>
 
                 <div className='info'>
                   <p>City</p>
-                  <p>{ShippingInfoRedux[0]?.Adress.city}</p>
+                  <p>{ShippingInfoRedux[0]?.city}</p>
                 </div>
                 <div className='info'>
                   <p>Shipping Adress</p>
-                  <p>{ShippingInfoRedux[0]?.Adress.adress}</p>
+                  <p>{ShippingInfoRedux[0]?.adress}</p>
                 </div>
               </div>
 
@@ -342,7 +349,7 @@ if(isHrer){
 
 
               <p class="shipping-costs">SubTotal: <b class="ship">${totalPrice}</b></p>
-              <p class="shipping-costs">Shipping: <b class="ship">$25</b></p>
+              <p class="shipping-costs">Shipping: <b class="ship">Free</b></p>
               <p class="shipping-costs">Total <b class="ship">${totalPrice + shippingPrice}</b></p>
 
 
