@@ -9,17 +9,20 @@ import { db } from '../../../FireBase/FireBase'
 import { Link } from 'react-router-dom'
 export default function AdminOrders() {
     const [update, setUpdate] = useState(false)
+    const [income, setIncome] = useState(0)
     const OrdersAdmin = useSelector(state => state.AdminReducer.OrderAdmin)
     const Dispatch = useDispatch()
 
     useEffect(() => {
-
+        /// get data orders from redux firbease
         Dispatch(GetOrders())
 
 
 
     }, [OrdersAdmin, update])
 
+
+    // remove order 
     const removeProduct = async (id) => {
         const pathimg = doc(db, "Orders", id)
         await deleteDoc(pathimg)
@@ -27,11 +30,37 @@ export default function AdminOrders() {
         setUpdate(!update)
     }
 
+
+    useEffect(() => {
+
+        // sum total all orders
+        setIncome(OrdersAdmin.reduce(
+            (accumulator, currentValue) => accumulator + currentValue.totalOrder,
+            0
+        ))
+
+
+    }, [OrdersAdmin])
+
     return (
         <div className='admin-content-side'>
             <AdminNavBar />
             <div className='card-order-admin'>
-                <CardOrder orderNumber={OrdersAdmin?.length} />
+                <div className='card-order-info' style={{ background: 'white' }}>
+                    <div className='card-order-text'>
+                        <p>Orders recive</p>
+                        <h2>{OrdersAdmin?.length}</h2>
+                    </div>
+
+                </div>
+                <div className='card-order-info' style={{ background: 'white' }}>
+                    <div className='card-order-text'>
+                        <p>Income</p>
+                        <h2>${income}</h2>
+                    </div>
+
+                </div>
+
 
 
             </div>
@@ -61,10 +90,11 @@ export default function AdminOrders() {
                                     <tr>
                                         <td><Link to={`/orders/${i.OrderId}`}>#{i.OrderId}</Link></td>
                                         <td>{i.shippingInfo[0].name}</td>
-                                        <td>${i.totalOrder}</td>
+
+                                        <td>${Math.round(i.totalOrder * 1).toFixed(2)}</td>
                                         <td>21/3/23</td>
-                                        <td>{i.statue === 'Processing' ? <p className='shipped-statue'>Shipped</p> : <p className='Processing-statue'>Processing</p>}</td>
-                                        <td><i onClick={() => removeProduct(i.id)} class=" remove-order-admin fa-solid fa-trash"></i> <i class=" edit-order-admin fa-regular fa-pen-to-square"></i></td>
+                                        <td> {i.status === 'Canceld' ? <p className='Canceld-statue'>Canceld</p> : i.status === 'Shipped' ? <p className='shipped-statue'>Shipped</p> : <p className='Processing-statue'>Processing</p>}</td>
+                                        <td><i onClick={() => removeProduct(i.id)} class=" remove-order-admin fa-solid fa-trash"></i> <Link to={`/orders/${i.OrderId}`}><i class=" edit-order-admin fa-regular fa-pen-to-square"></i></Link></td>
                                     </tr>
                                 )
 
@@ -85,22 +115,3 @@ export default function AdminOrders() {
 }
 
 
-function CardOrder({ orderNumber }) {
-
-
-    return (
-
-
-
-        <div className='card-order-info' style={{ background: 'white' }}>
-            <div className='card-order-text'>
-                <p>Order Recive</p>
-                <h2>{orderNumber}</h2>
-            </div>
-
-        </div>
-
-
-
-    )
-}

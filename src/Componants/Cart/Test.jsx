@@ -325,7 +325,8 @@ if(isHrer){
 
                   {/*Total Side */}
                   <div className='part4'>
-                    <p>{item.price * i.quntity}</p>
+           
+                    <p>       {Math.round(item.price * i.quntity * 1).toFixed(2)}</p>
                   </div>
                 </div>
 
@@ -344,10 +345,10 @@ if(isHrer){
 
             <div className='Price-Detailes'>
 
-
-              <p class="shipping-costs">SubTotal: <b class="ship">${totalPrice}</b></p>
+           
+              <p class="shipping-costs">SubTotal: <b class="ship">${Math.round(totalPrice * 1).toFixed(2)}</b></p>
               <p class="shipping-costs">Shipping: <b class="ship">Free</b></p>
-              <p class="shipping-costs">Total <b class="ship">${totalPrice + shippingPrice}</b></p>
+              <p class="shipping-costs">Total <b class="ship">$ {Math.round(totalPrice + shippingPrice * 1).toFixed(2)}</b></p>
 
 
             </div>
