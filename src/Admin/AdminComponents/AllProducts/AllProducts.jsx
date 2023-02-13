@@ -57,14 +57,14 @@ function CardProductAdmin({dataCard,update,setUpdate}) {
     <div className='card-product-admin' >
 
       <div className='img-card-product-admin'>
-        <div className='actions-card-product-admin'><a onClick={()=>removeProduct(dataCard.id)}>Remove</a> <a>Edit</a></div>
+        <div className='actions-card-product-admin'><a onClick={()=>removeProduct(dataCard?.id)}>Remove</a> <a>Edit</a></div>
 
-        <img src={dataCard.image[0]}></img>
+        <img src={dataCard?.image[0]}></img>
       </div>
 
       <div className='text-card-product-admin'>
-        <p>{dataCard.title}</p>
-        <p className='price-card-product-admin'>${dataCard.price}</p>
+        <p>{dataCard?.title}</p>
+        <p className='price-card-product-admin'>${dataCard?.price}</p>
       </div>
 
     </div>
