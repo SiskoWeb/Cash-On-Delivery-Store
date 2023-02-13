@@ -4,8 +4,10 @@ import './AdminOrders.scss'
 import { GetOrders } from '../../../Redux/Actions/getPrroducts'
 import { useDispatch, useSelector } from 'react-redux'
 import AdminNavBar from '../AdminNavBar/AdminNavBar'
+import { collection, addDoc ,deleteDoc,doc,getDocs} from "firebase/firestore";
+import { db } from '../../../FireBase/FireBase'
 export default function AdminOrders() {
-
+    const [update, setUpdate] = useState(false)
     const OrdersAdmin = useSelector(state => state.AdminReducer.OrderAdmin)
     const Dispatch = useDispatch()
 
@@ -15,9 +17,15 @@ export default function AdminOrders() {
 
 
 
-    }, [OrdersAdmin])
+    }, [OrdersAdmin,update])
 
-
+    const removeProduct = async (id) => {
+        const pathimg = doc(db, "Orders", id)
+        await deleteDoc(pathimg)
+      
+        setUpdate(!update)
+    }
+    
     return (
         <div className='admin-content-side'>
             <AdminNavBar />
@@ -57,7 +65,7 @@ return(
     <td>${i.totalOrder}</td>
     <td>21/3/23</td>
     <td>{i.statue === 'Processing'?<p className='shipped-statue'>Shipped</p>:<p className='Processing-statue'>Processing</p>}</td>
-    <td><i class=" remove-order-admin fa-solid fa-trash"></i> <i class=" edit-order-admin fa-regular fa-pen-to-square"></i></td>
+    <td><i onClick={()=>removeProduct(i.id)} class=" remove-order-admin fa-solid fa-trash"></i> <i class=" edit-order-admin fa-regular fa-pen-to-square"></i></td>
     </tr>
 )
 
@@ -89,6 +97,8 @@ return(
 
 
 function CardOrder() {
+
+
     return (
 
 

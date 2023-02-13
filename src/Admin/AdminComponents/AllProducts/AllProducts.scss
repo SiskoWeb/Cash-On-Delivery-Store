@@ -28,17 +28,31 @@ flex-direction: column;
 position: relative;
 width: 150px;
 height: 150px;
+display: flex;
+align-items: center;
+justify-content: center;
 
 img{
     width: 100%;
-   height: 100%;
+    height: 150px;
    object-fit: cover;
+   transition: all .2s linear;
 }
 }
 .actions-card-product-admin{
+    top: -10px;
 position: absolute;
+display: flex;
+justify-content: space-between;
 color: red;
 right: 0;
+width: 100%;
+z-index: 4;
+a{
+    cursor: pointer;
+    color: black !important;
+    font-size: 10px;
+}
 }
 .text-card-product-admin{
     color: black;
@@ -49,8 +63,8 @@ right: 0;
 
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    height: 50px;
+    gap: 5px;
+    height: 100%;
 padding: 5px 10px;
 
     p{
@@ -61,3 +75,9 @@ padding: 5px 10px;
 .price-card-product-admin{
     color: #f1cd5f;
 }
+.edit-product-admin{
+    color: green;
+}
+// .img-card-product-admin img:hover{
+//   filter: blur(2px);
+// }
