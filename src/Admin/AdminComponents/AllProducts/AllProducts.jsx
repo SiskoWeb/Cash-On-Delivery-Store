@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import AdminNavBar from '../AdminNavBar/AdminNavBar'
+import { GetProducts } from '../../../Redux/Actions/getPrroducts'
 import testimg from '../../../Images/knife/0ef49d73be7e60dfe9a754a852df76ef.jpg'
 import { collection, addDoc ,deleteDoc,doc,getDocs} from "firebase/firestore";
 import { db } from '../../../FireBase/FireBase'
@@ -12,10 +13,14 @@ export default function AllProducts() {
 
   const Products = useSelector(state => state.ReducerUser.Products)
 
+const Dispatch = useDispatch()
 
 
+useEffect(()=>{
 
+Dispatch(GetProducts())
 
+},[update])
 
 
   return (
@@ -43,7 +48,7 @@ function CardProductAdmin({dataCard,update,setUpdate}) {
   const removeProduct = async (id) => {
     const pathimg = doc(db, "Products", id)
     await deleteDoc(pathimg)
-  
+  console.log(id)
     setUpdate(!update)
 }
 

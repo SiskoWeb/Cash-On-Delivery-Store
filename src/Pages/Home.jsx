@@ -13,6 +13,7 @@ import { collection, addDoc, Timestamp,getDocs ,arrayUnion, query, orderBy, onSn
 import { useDispatch, useSelector } from 'react-redux'
 import { db } from '../FireBase/FireBase'
 import Card from '../Componants/CardProduct/Card'
+import { GetProducts } from '../Redux/Actions/getPrroducts'
 import Card2 from '../Componants/Card2/Card2';
 export default function Home() {
 
@@ -22,13 +23,22 @@ const dispatcho = useDispatch()
 
 
 const [products,setProducts]=useState([])
-const [ProductsAdmin,setProductsAdmin]=useState([])
+
 const [loading,setLoading]=useState(false)
+  const [ProductsAdmin,setProductsAdmin]=useState([])
 
 
 
+const Dispatch = useDispatch()
 
 
+
+// useEffect(()=>{
+
+//   Dispatch(GetProducts())
+  
+//   },[])
+  
 
 
 useEffect(()=>{
