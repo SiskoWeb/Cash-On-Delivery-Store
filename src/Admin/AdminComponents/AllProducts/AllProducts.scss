@@ -4,15 +4,15 @@
     width: 100%;
     margin-left:20px ;
     padding: 20px;
-    display: grid;
-grid-template-columns: auto auto auto auto auto auto ;
-    gap: 10px;
+    display: flex;
+flex-direction: column;
+    gap: 20px;
 }
 
 
 .card-product-admin{
     // width: calc(25% - 10px);
-
+    transition: all .3s linear;
     height: 150px;
     display: flex;
     width: 150px;
@@ -24,6 +24,11 @@ flex-direction: column;
    border-radius: 5px;
 
 }
+// .card-product-admin:hover .actions-card-product-admin{
+// display: flex;
+// top: -10px;
+// z-index: 4;
+// }
 .img-card-product-admin{
 position: relative;
 width: 150px;
@@ -40,15 +45,19 @@ img{
 }
 }
 .actions-card-product-admin{
-    top: -10px;
+
 position: absolute;
-display: flex;
+
 justify-content: space-between;
 color: red;
 right: 0;
+transition: all .3s linear;
 width: 100%;
+display: flex;
+top: -10px;
 z-index: 4;
 a{
+    transition: all .3s linear;
     cursor: pointer;
     color: black !important;
     font-size: 10px;
@@ -58,7 +67,7 @@ a{
     color: black;
     
 
-    background-color: #f7f7f9;
+    // background-color: #f7f7f9;
     width: 100%;
 
     display: flex;
@@ -81,3 +90,10 @@ padding: 5px 10px;
 // .img-card-product-admin img:hover{
 //   filter: blur(2px);
 // }
+.list-card-products{
+    padding: 20px;
+    display: flex;
+    gap: 40px;
+
+    flex-wrap: wrap;
+}

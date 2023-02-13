@@ -19,7 +19,7 @@ export default function ProductPage() {
   const [update, setUpdate] = useState(false)
 
 
-  const productFromRedux = useSelector(state =>state.Products)
+  const productFromRedux = useSelector(state =>state.ReducerUser.Products)
 
   const dispatcho = useDispatch()
   // const Products = useSelector(state => state.Products)

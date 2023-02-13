@@ -17,6 +17,7 @@ import Add from './Admin/AdminPages/PageAddProduct/Add'
 import PageProducts from './Admin/AdminPages/PageProducts/PageProducts'
 
 import PageOrders from './Admin/AdminPages/PageOrders/PageOrders'
+import PageOrderDetails from './Admin/AdminPages/PageOrderDetails/PageOrderDetails'
 function App() {
 
 
@@ -40,8 +41,9 @@ function App() {
           <Route path='/addproduct' element={<Add/>} />
           <Route path='/admin' element={<PageOrders/>} />
           <Route path='/products' element={<PageProducts/>} />
+          <Route path='/orders/:id' element={<PageOrderDetails/>} />
 
-       
+          
 
         </Routes>
  

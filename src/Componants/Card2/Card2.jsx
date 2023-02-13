@@ -18,7 +18,7 @@ export default function Card2({data,setUpdate,update}) {
                    payload:  {
                     id:data.id,
                     quntity:1,
-                 
+                    Cart:carList
                    }  
                   
                   })

@@ -26,10 +26,7 @@ export default function Test() {
   const [phone, setPhone] = useState(ShippingInfoRedux[0]?.phone)
   const [city, setCity] = useState(ShippingInfoRedux[0]?.city)
 
-  // const [name, setName] = useState()
-  // const [adress, setAdress] = useState()
-  // const [phone, setPhone] = useState()
-  // const [city, setCity] = useState()
+
   const [city1, setCity1] = useState()
   const [done, setDone] = useState(true)
 
@@ -39,9 +36,9 @@ export default function Test() {
   const [cart, setCart] = useState(carList)
   const [shippingInfo, setShippingInfo] = useState(ShippingInfoRedux)
   const [update, setUpdate] = useState(false)
-  const [adressUpdate, setAdressUpdate] = useState(false)
+
   const dispatcho = useDispatch()
-  const [productById, setProductById,] = useState(Products)
+
 
 
   console.log(city1)
@@ -146,11 +143,11 @@ const onUpload = async (e) => {
     const ProductinDb = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
     const docRef = await addDoc(collection(db, 'Orders'), {
       OrderId:ProductinDb.length + 1,
-      shippingInfo: ShippingInfoRedux,
+      shippingInfo: JSON.parse(localStorage.getItem("Shipping-Info")),
       Products: cart,
       totalOrder: totalPrice,
       dateOrder: serverTimestamp(), 
-      statue:'Processing'
+      status:'Processing'
     })
 
     await Promise.all(

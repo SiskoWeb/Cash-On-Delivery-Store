@@ -24,7 +24,11 @@ export default function AllProducts() {
       <AdminNavBar />
 
       <div className='list-prodcuts-admin'>
-        {Products?.length >= 1 ? Products?.map((i) => <CardProductAdmin dataCard={i} setUpdate={setUpdate} update={update}  />) : <p>noo Products</p>}
+<div className='title-list-prodcuts-admin'>      <h2 class="mini-title-add-product"><i class="zmdi zmdi-info-outline mr-10"></i>about product</h2>
+<hr class="light-grey-hr"></hr></div>
+      <div className='list-card-products'>
+      {Products?.length >= 1 ? Products?.map((i) => <CardProductAdmin dataCard={i} setUpdate={setUpdate} update={update}  />) : <p>noo Products</p>}
+      </div>
 
 
       </div>
@@ -50,7 +54,7 @@ function CardProductAdmin({dataCard,update,setUpdate}) {
       <div className='img-card-product-admin'>
         <div className='actions-card-product-admin'><a onClick={()=>removeProduct(dataCard.id)}>Remove</a> <a>Edit</a></div>
 
-        <img src={dataCard.image}></img>
+        <img src={dataCard.image[0]}></img>
       </div>
 
       <div className='text-card-product-admin'>

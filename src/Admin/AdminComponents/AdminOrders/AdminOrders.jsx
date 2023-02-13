@@ -4,8 +4,9 @@ import './AdminOrders.scss'
 import { GetOrders } from '../../../Redux/Actions/getPrroducts'
 import { useDispatch, useSelector } from 'react-redux'
 import AdminNavBar from '../AdminNavBar/AdminNavBar'
-import { collection, addDoc ,deleteDoc,doc,getDocs} from "firebase/firestore";
+import { collection, addDoc, deleteDoc, doc, getDocs } from "firebase/firestore";
 import { db } from '../../../FireBase/FireBase'
+import { Link } from 'react-router-dom'
 export default function AdminOrders() {
     const [update, setUpdate] = useState(false)
     const OrdersAdmin = useSelector(state => state.AdminReducer.OrderAdmin)
@@ -17,25 +18,23 @@ export default function AdminOrders() {
 
 
 
-    }, [OrdersAdmin,update])
+    }, [OrdersAdmin, update])
 
     const removeProduct = async (id) => {
         const pathimg = doc(db, "Orders", id)
         await deleteDoc(pathimg)
-      
+
         setUpdate(!update)
     }
-    
+
     return (
         <div className='admin-content-side'>
             <AdminNavBar />
-<div className='card-order-admin'>
-<CardOrder/>
-<CardOrder/>
-<CardOrder/>
-<CardOrder/>
+            <div className='card-order-admin'>
+                <CardOrder orderNumber={OrdersAdmin?.length} />
 
-</div>
+
+            </div>
             <div className='admin-Order'>
 
 
@@ -56,24 +55,24 @@ export default function AdminOrders() {
                                 <th>Actions</th>
                             </tr>
                         </thead>
-<tbody>
-{OrdersAdmin.length >= 1?OrdersAdmin?.map((i)=>{
-return(
-    <tr>
-    <td>#{i.OrderId}</td>
-    <td>{i.shippingInfo[0].name}</td>
-    <td>${i.totalOrder}</td>
-    <td>21/3/23</td>
-    <td>{i.statue === 'Processing'?<p className='shipped-statue'>Shipped</p>:<p className='Processing-statue'>Processing</p>}</td>
-    <td><i onClick={()=>removeProduct(i.id)} class=" remove-order-admin fa-solid fa-trash"></i> <i class=" edit-order-admin fa-regular fa-pen-to-square"></i></td>
-    </tr>
-)
+                        <tbody>
+                            {OrdersAdmin.length >= 1 ? OrdersAdmin?.map((i) => {
+                                return (
+                                    <tr>
+                                        <td><Link to={`/orders/${i.OrderId}`}>#{i.OrderId}</Link></td>
+                                        <td>{i.shippingInfo[0].name}</td>
+                                        <td>${i.totalOrder}</td>
+                                        <td>21/3/23</td>
+                                        <td>{i.statue === 'Processing' ? <p className='shipped-statue'>Shipped</p> : <p className='Processing-statue'>Processing</p>}</td>
+                                        <td><i onClick={() => removeProduct(i.id)} class=" remove-order-admin fa-solid fa-trash"></i> <i class=" edit-order-admin fa-regular fa-pen-to-square"></i></td>
+                                    </tr>
+                                )
 
-}):<p>no orders</p>}
+                            }) : <p>no orders</p>}
 
 
 
-</tbody>
+                        </tbody>
 
 
                     </table>
@@ -85,18 +84,8 @@ return(
     )
 }
 
-// <tr>
-// <td className='id-table-order'>{i.OrderId}</td>
-// <td>{i.shippingInfo[0].name}</td>
-// <td>{2023/25/25}</td>
 
-// <td>{i.statue === 'Processing'?<p className='shipped-statue'>Shipped</p>:<p className='Processing-statue'>Processing</p>}</td>
-// <td>${i.totalOrder}</td>
-// <td className='remove-btn-order'>Remove</td>
-// </tr>
-
-
-function CardOrder() {
+function CardOrder({ orderNumber }) {
 
 
     return (
@@ -106,9 +95,9 @@ function CardOrder() {
         <div className='card-order-info' style={{ background: 'white' }}>
             <div className='card-order-text'>
                 <p>Order Recive</p>
-                <h2>26</h2>
+                <h2>{orderNumber}</h2>
             </div>
-            <i class="fa-solid fa-clock-rotate-left"></i>
+
         </div>
 
 
