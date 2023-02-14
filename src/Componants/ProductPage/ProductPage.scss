@@ -9,7 +9,8 @@ padding-top: 100px;
 gap:$gap  
 }
 .productPage{
-
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
     @include d-flex-col(center,space-around,column,00px);
 
     p{
@@ -36,24 +37,46 @@ $Main-Color: #7EC855;
 .Porudct-Page{
 display: flex;
 width: 100%;
+-webkit-animation: fadeIn 1s;
+animation: fadeIn 1s;
 height: 100%;
 justify-content: center;
 margin-top: 100px;
 }
-
+.list-img-product-detaile{
+ 
+    display: flex;
+    gap: 15px;
+    transition: width 2s, height 2s  ;
+}
 .imgBorder{
-    min-width: 50%;
+width: 100%;
     height: calc(100% - 20%);
 flex-basis: 60%;
+gap: 20px;
 display: flex;
 align-items: center;
+flex-direction: column;
 justify-content: center;
 background-color: white;
+transition: all .3s linear;
+height: 400px;
+.mini-img{
+    width: 90px;
+    height: 90px;
+    transition: opacity 1s ease-out;
+}
 img{
-   width: 70%;
-    height: auto;
+    width: 300px;
+    height: 300px;
+    border-radius: 5px;
+    object-fit: cover;
+
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
 }
 }
+
 .Text-Product2{
     flex-basis: 40%;
     display: flex;

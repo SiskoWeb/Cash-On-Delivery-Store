@@ -3,7 +3,7 @@ import './NavBar.scss'
 export default function Bar() {
   return (
     <div className='bar'>
-    <p> +212638790915 - hello@yassine.info - 40% </p>
+    <p> hello@yassine.info - 40% - I am not currently focused on design. </p>
     </div>
   )
 }

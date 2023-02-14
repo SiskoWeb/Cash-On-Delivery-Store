@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { storage, db } from '../../../FireBase/FireBase'
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { collection, addDoc, arrayUnion, updateDoc, doc, setDoc, Timestamp, getDocs ,serverTimestamp } from "firebase/firestore";
-
+import MultiImageInput from 'react-multiple-image-input';
 import 'react-toastify/dist/ReactToastify.css';
 import notify from '../../../hook/useNotifcation'
 import { ToastContainer, toast } from 'react-toastify';
@@ -13,7 +13,7 @@ import './AddProduct.scss'
 import AdminNavBar from '../AdminNavBar/AdminNavBar';
 export default function AddProduct() {
   const [images, setImages] = useState([])
-
+  const [images2, setImages2] = useState({});
 
   const [msgError, setMsgError] = useState(false);
   const [title, setTitle] = useState('');
@@ -27,7 +27,11 @@ export default function AddProduct() {
   const [uploadedFiles, setUploadedFiles] = useState([])
   const [fileLimit, setFileLimit] = useState(false);
 
-
+  const crop = {
+    unit: '%',
+    aspect: 4 / 3,
+    width: '100'
+  };
 
 
   //-=--------------------
@@ -105,10 +109,12 @@ export default function AddProduct() {
      <hr class="light-grey-hr"></hr>
 
 <div className='upload-media-admin'>      <label className='labelupload-image' for="imgProducts">
-<div className='dropimages'> <p>Drop Images Here</p> </div>
+<div className='dropimages'> <p>Drop Images Here 'up to 4 images'</p> </div>
   <input className='input-image' type='file' id='imgProducts' multiple onChange={(e) => setImages(Object.values(e.target.files))}
-   disabled={fileLimit} accept=".png, .jpg, .jpeg"></input>
+   disabled={fileLimit === images.length} accept="image/*"></input>
 </label>
+
+
 <div className='list-imgs'>  {images?.map((i) => <img src={URL.createObjectURL(i)}></img>)}</div> 
 
 </div>

@@ -17,6 +17,7 @@ export default function ProductPage() {
 
   let userId = useParams();
   const [update, setUpdate] = useState(false)
+  const [mainImg, setMainImg] = useState(0)
 
 
   const productFromRedux = useSelector(state =>state.ReducerUser.Products)
@@ -53,16 +54,24 @@ export default function ProductPage() {
 
   }
 
+console.log(product)
 
 
 
+const chnageIMG = (index)=>{
+  setMainImg(index)
+}
   return (
 
     
 <div className='newProduct'>
 
 <div className='Porudct-Page'>
-<div className='imgBorder' ><img src={product?.image[0]}></img> </div>
+<div className='imgBorder' ><img className='main-img-product' src={product?.image[mainImg]}></img> 
+<div className='list-img-product-detaile'>
+{product?.image.map((i,index)=><img onClick={()=>chnageIMG(index)} className='mini-img' src={i}></img>)}
+</div>
+</div>
 
 <div className='Text-Product2'>
 {loading?<p className='title'>Loading</p>:<p className='title'>{product?.title}</p>}

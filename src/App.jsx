@@ -31,7 +31,7 @@ function App() {
 
       <NavBar />
 
-        
+        <main>
         <Routes>
   <Route path='/' element={<Home />} />
           <Route path='/cart' element={<Test />} />
@@ -46,7 +46,7 @@ function App() {
           
 
         </Routes>
- 
+        </main>
       </BrowserRouter>
       
     </div>

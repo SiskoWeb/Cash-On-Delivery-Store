@@ -118,7 +118,7 @@ export default function Test() {
 
       }
       )
-
+localStorage.setItem('Shipping-Info',ShippingInfoRedux)
       setUpdate(!update)
       setError(false)
       setDone(true)
@@ -155,10 +155,10 @@ const onUpload = async (e) => {
       cart?.map((itemStock) => {
      
 const isHrer = ProductinDb2?.find((i)=> i.id === itemStock.id)
-console.log('inside loop11')
-console.log(isHrer)
+
+
 if(isHrer){
-  console.log('inside loop')
+
   updateDoc(doc(db, "Products", itemStock.id), {
     stock: isHrer.stock - itemStock.quntity
  })
@@ -171,7 +171,7 @@ if(isHrer){
  localStorage.removeItem("shopping-cart"),
  setUpdate(!update) ,
  setError(false),
- setDone(true),navigate("/")
+ setDone(true),navigate("/thanks")
  
  )
 

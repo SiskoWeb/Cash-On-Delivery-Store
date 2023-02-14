@@ -1,9 +1,10 @@
 .App{
     /* width: 100%; */
+    
 }
 
 
-/*   
+  
 main.fillHeight {
     padding: 0px 150px;
   }
@@ -14,14 +15,14 @@ main.fillHeight {
     max-width: 1600px;
     min-height: 100vh;
     padding: 50px 150px;
-  } */
+  }
 
   @media (max-width: 1080px){
 
 
   }
   
-  /* @media (max-width: 991.98px) { 
+  @media (max-width: 991.98px) { 
 
     main.fillHeight {
       padding: 0px 100px;
@@ -36,4 +37,4 @@ main.fillHeight {
     }
 
    }
- */
+
