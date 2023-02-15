@@ -2,27 +2,26 @@
     cursor: pointer;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 24px;
     padding: 16px;
     -webkit-user-select: none;
     user-select: none;
     width: 100%;
-height: auto;
-color: black;
--webkit-animation: fadeIn 1s;
-animation: fadeIn 1s;
-    img{
-        width: 100%;
-        object-fit: cover;
-        height: auto;
-    }
+
 }
 
 .card2-img{
+    padding-top: 100%;
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 100%;
+    img{
+        -webkit-user-drag: none;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
 
 }
 .card2-text{
@@ -34,19 +33,16 @@ display: flex;
  flex-basis: 20%;
 } 
 
-.card2:hover{
-    // background: #FFFFFF;
-    // border: 1px solid #EEEEEE;
-}
+
 .itemCardName{
     font-family: var(--raleway);
-    font-size: clamp(5px, 8vw, 10px);
+    font-size: 18px;
     font-weight: 300;
     margin-bottom: 10px;
 }
 .itemCardPrice{
     font-family: var(--raleway);
-    font-size: clamp(5px, 8vw, 10px);
+    font-size: 18px;
     font-weight: 500;
 }
 

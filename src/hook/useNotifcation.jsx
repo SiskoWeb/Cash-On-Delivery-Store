@@ -3,14 +3,14 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 const notify = (state,func) => toast(state, {
-    position: "top-center",
-    autoClose: 1000,
+    position: "top-left",
+    autoClose: 4990,
     hideProgressBar: false,
     closeOnClick: true,
     pauseOnHover: true,
     draggable: true,
     progress: undefined,
-    theme: "dark",
+    theme: "light",
 
     });
 

@@ -54,8 +54,8 @@ export default function Card2({data,setUpdate,update}) {
 {data.stock === 0?<div className='itemCardBuybtnDisabled'><i   class="fa-solid fa-cart-plus"></i></div>:<div className='itemCardBuybtn'><i  onClick={()=>addCart(data)} class="fa-solid fa-cart-plus"></i></div>}
 </div>
 <ToastContainer
-position="top-center"
-autoClose={1000}
+position="top-left"
+autoClose={4990}
 hideProgressBar={false}
 newestOnTop={false}
 closeOnClick
@@ -63,7 +63,7 @@ rtl={false}
 pauseOnFocusLoss
 draggable
 pauseOnHover
-theme="dark"
+theme="light"
 />
     </div>
   

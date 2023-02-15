@@ -23,7 +23,7 @@ const [word,setWord]=useState()
     
     <Link className='logo' to='/'><img src={Logo}></img></Link>
 
-   <div  className='cartIcon' > <Link to='/cart' className='cartBTN'><i className="fa fa-shopping-basket"></i></Link> {cartList?.length}</div>
+   <div  className='cartIcon' > <Link to='/cart' className='cartBTN'><i className="icon-cart-navbar fa-solid fa-cart-shopping"></i> {cartList?.length >= 1?<div className='cart-number-item-added'>{cartList?.length}</div>:null}</Link></div>
 
     </nav>
     </div>
