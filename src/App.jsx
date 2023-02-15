@@ -34,7 +34,7 @@ console.log('yes admin login')
       // ...
     } else {
       console.log('no admin login')
-      /Dispatch({
+      Dispatch({
         type:'IS_AUTH',
         payload:false
       })
@@ -44,6 +44,7 @@ console.log('yes admin login')
 
   console.log(isAuth)
 },[])
+
   
   return (
     <div className="App">
@@ -51,11 +52,11 @@ console.log('yes admin login')
       <BrowserRouter>
 
 
-      <NavBar />
+     
 
-        <main>
+       
         <Routes>
-  <Route path='/' element={<Home />} />
+          <Route path='/' element={<Home />} />
           <Route path='/cart' element={<Test />} />
           <Route path='/thanks' element={<Thankyou />} />
           <Route path='/product/:id' element={<ProductPage />} />
@@ -65,11 +66,12 @@ console.log('yes admin login')
           <Route path='/products' element={isAuth?<PageProducts/>:<LoginAdmin/>}/>
           <Route path='/orders/:id' element={isAuth?<PageOrderDetails/>:<LoginAdmin/>} />
           <Route path='/login' element={isAuth?<PageOrders/>:<LoginAdmin/>} />
+       
 
           
 
         </Routes>
-        </main>
+  
       </BrowserRouter>
       
     </div>

@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { db } from '../FireBase/FireBase'
 
 import Card2 from '../Componants/Card2/Card2';
+import NavBar from '../Componants/NavBar/NavBar';
 export default function Home() {
 
 const [update,setUpdate]=useState(false)
@@ -74,9 +75,12 @@ useEffect(() => {
 
 console.log(ProductsAdmin)
   return (
+<>
 
- 
+<NavBar />
+<main>
 <div className='home'>
+
     <h2>New</h2>
     <p>Latest products added to the site</p>
 
@@ -88,6 +92,8 @@ console.log(ProductsAdmin)
    </div>
 
    </div>
+   </main>
+</>
 
   )
 }

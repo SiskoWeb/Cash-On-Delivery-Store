@@ -10,6 +10,7 @@ import { ref ,uploadBytes, getDownloadURL  } from "firebase/storage";
 import { collection, addDoc, arrayUnion, updateDoc, doc , setDoc ,Timestamp,getDocs ,serverTimestamp } from "firebase/firestore"; 
 import './Cart2.scss'
 import axios from 'axios'
+import NavBar from '../NavBar/NavBar'
 export default function Test() {
 
 
@@ -229,7 +230,9 @@ if(isHrer){
   console.log(ShippingInfoRedux?.length)
 
   return (
-   
+   <>
+   <NavBar/>
+ <main>
       <div className='cart-page' >
         <h3>Your Cart</h3>
 
@@ -366,6 +369,7 @@ if(isHrer){
 
 
       </div>
-
+      </main>
+      </>
   )
 }

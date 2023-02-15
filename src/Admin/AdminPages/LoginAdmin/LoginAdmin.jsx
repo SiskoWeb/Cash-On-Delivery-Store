@@ -4,6 +4,7 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import NavBar from '../../../Componants/NavBar/NavBar';
 
 export default function LoginAdmin() {
 const [email,setEmail]= useState()
@@ -37,9 +38,12 @@ const login = (e)=>{
 }
 console.log(isAuth)
   return (
+    <>
+    <NavBar/>
+    <main>
     <div>
 
-    <form >
+    <form className='formLogin' >
     
     <p>Login</p>
     <input onChange={(e)=>setEmail(e.target.value)} className='input-data' type='email'></input>
@@ -50,5 +54,7 @@ console.log(isAuth)
     Email: admin@yassine.info = Password: 123456
     </p>
     </div>
+    </main>
+    </>
   )
 }

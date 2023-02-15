@@ -35,7 +35,7 @@ export default function AdminOrderDetails() {
     useEffect(() => {
 
 
-        setOneOrderbyID(OrdersAdmin.find(i => i.OrderId !== idOrder.id));
+        setOneOrderbyID(OrdersAdmin.find(i => i.OrderId === idOrder.id));
 
 
     }, [OrdersAdmin])

@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import  JsonData  from '../../products.json'
 
 import './ProductPage.scss'
+import NavBar from '../NavBar/NavBar'
 
 
 
@@ -62,8 +63,10 @@ const chnageIMG = (index)=>{
   setMainImg(index)
 }
   return (
-
-    
+    <>
+    <NavBar />
+  
+<main>
 <div className='newProduct'>
 
 <div className='Porudct-Page'>
@@ -96,6 +99,7 @@ const chnageIMG = (index)=>{
     </div>
 
     </div>
-
+    </main>
+    </>
   )
 }
