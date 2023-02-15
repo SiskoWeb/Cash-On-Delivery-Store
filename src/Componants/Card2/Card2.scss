@@ -36,13 +36,13 @@ display: flex;
 
 .itemCardName{
     font-family: var(--raleway);
-    font-size: 18px;
+    font-size: clamp(5px, 8vw, 10px);
     font-weight: 300;
     margin-bottom: 10px;
 }
 .itemCardPrice{
     font-family: var(--raleway);
-    font-size: 18px;
+    font-size: clamp(5px, 8vw, 15px);
     font-weight: 500;
 }
 

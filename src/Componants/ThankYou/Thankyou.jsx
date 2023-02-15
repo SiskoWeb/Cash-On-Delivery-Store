@@ -2,15 +2,18 @@ import React from 'react'
 import { useEffect ,useState } from 'react'
 import { useDispatch,useSelector } from 'react-redux'
 import './Thankyou.css'
-import Card from '../CardProduct/Card'
+
 export default function Thankyou() {
 const Order = useSelector(state=> state.Order)
 
 
 const orderdata = JSON.parse(localStorage.getItem("Shipping-Info"))
 const [update,setUpdate]=useState(false)
-
-
+const cartList = useSelector(state => state.ReducerUser.Cart)
+const dispatch = useDispatch()
+useEffect(()=>{
+  cartList.length = 0;
+},[])
 
 
   return (

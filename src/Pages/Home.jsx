@@ -6,14 +6,13 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import './Home.scss'
 import  JsonData  from '../products.json'
-// import { collection, getDocs } from "firebase/firestore";
+
 
 
 import { collection, addDoc, Timestamp,getDocs ,arrayUnion, query, orderBy, onSnapshot,  } from "firebase/firestore"; 
 import { useDispatch, useSelector } from 'react-redux'
 import { db } from '../FireBase/FireBase'
-import Card from '../Componants/CardProduct/Card'
-import { GetProducts } from '../Redux/Actions/getPrroducts'
+
 import Card2 from '../Componants/Card2/Card2';
 export default function Home() {
 
@@ -33,11 +32,7 @@ const Dispatch = useDispatch()
 
 
 
-// useEffect(()=>{
 
-//   Dispatch(GetProducts())
-  
-//   },[])
   
 
 

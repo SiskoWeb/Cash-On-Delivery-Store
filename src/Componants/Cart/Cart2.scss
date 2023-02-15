@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,600;0,700;0,800;1,100;1,200;1,400;1,600;1,700;1,800;1,900&display=swap');
 
-.errorMSG-Checkout{
-    color: red;
+.MSG-Checkout-add-address{
+    color: rgb(173, 173, 173);
 }
 
 p {
@@ -78,7 +78,7 @@ textarea{
     color: #000000;
     border-style: solid;
     border-radius: 4px;
-    box-shadow: 0px 0px 1px rgba(20, 20, 20, 0.75);
+border: 1px solid black;
    
 }
 input{
@@ -93,7 +93,7 @@ margin: 15px 0;
     color: #000000;
     border-style: solid;
     border-radius: 4px;
-    box-shadow: 0px 0px 1px rgba(20, 20, 20, 0.75);
+    border: 1px solid black;
 
    
 }
@@ -286,6 +286,8 @@ width: 20%;
 
 .errorMSG{
     color: red;
+    
+    font-size: clamp(10px ,8vw , 15px) !important;
 }
 .title-cart{
     white-space: nowrap;
@@ -322,7 +324,11 @@ text-align: end;
     
 
  }
-
+.Adress-side{
+    >p{
+        justify-content: center;
+    }
+}
  .displayInfo{
     display: flex;
     flex-direction: row-reverse;

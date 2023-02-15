@@ -32,7 +32,7 @@
 // new desgn
 
 
-$Main-Color: #7EC855;
+$Main-Color: #5ece7b;
 
 .Porudct-Page {
     display: flex;
@@ -106,7 +106,7 @@ $Main-Color: #7EC855;
 
     .title {
         font-family: var(--raleway);
-        font-size: 30px;
+        font-size: clamp(5px, 8vw , 15px);
         font-weight: 600;
         white-space: nowrap;
         max-width: 100%;
@@ -116,7 +116,7 @@ $Main-Color: #7EC855;
 
     .price {
         font-family: var(--raleway);
-        font-size: 24px;
+        font-size: clamp(5px, 8vw , 15px);
         font-weight: 700;
         margin-top: 10px;
 
@@ -127,97 +127,45 @@ $Main-Color: #7EC855;
         }
     }
 
-    .visitor {
-        justify-self: center;
-        font-size: 25px;
-        font-family: 'Open Sans', sans-serif;
-        width: 100%;
-        text-align: center;
 
-        span {
-            background-color: #CC0000;
-            color: white;
-            padding: 2px 5px;
-            border-radius: 5px;
-        }
-    }
 
 }
 
-.btn-share {
-    width: 100%;
-    border: 1px rgb(93, 93, 93) solid;
-
-    height: 50px;
-    padding: 15px;
-    position: relative;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 50px;
-    text-align: center;
 
 
-    a {
-        background-color: #44c453;
-        color: white;
-        padding: 6px;
-        display: flex;
-        font-size: 15px;
-        align-items: center;
-        justify-content: center;
-        border-radius: 5px;
-        width: 120px;
-    }
 
-    .share {
-
-        position: absolute;
-        top: -38%;
-        background-color: white;
-        font-family: 'Open Sans', sans-serif;
-        font-weight: 400;
-        left: 45%;
-
-    }
-}
-
-// .discrip{
-//     border: 1px black solid;
-//     padding: 10px;
-//     height: 100px;
-
-// }
 @media (max-width: 767.98px) {
     .Porudct-Page {
 
         flex-direction: column;
+        gap: 50px;
 
-        .title {
-            font-size: 40px;
+ 
+
+    }
+    .Text-Product2 {
+        flex-basis: 100%;
+   
+        gap: 15px;
+       
+        justify-content: space-between;
+        min-width: 100%;
+  
 
 
-        }
-
-        .visitor {
-
-            font-size: 20px;
-
-
-            span {
-
-                padding: 2px 5px;
-
-            }
+        .buybtn {
+       
+        
+        
+            padding: 10px 0;
+            width: 70%;
+         
+            align-self: center;
+            border-radius: 5px;
+            font-size: 25px;
+            font-family: 'Open Sans', sans-serif;
         }
     }
 
-    .btn-share {
-        a {
-            font-size: 12px;
-            width: 120px;
-        }
-    }
 
 }

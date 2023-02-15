@@ -272,9 +272,9 @@ if(isHrer){
               </div>
 
             </div> : <form onSubmit={(e) => addAdress(e)}>
-            <p className='errorMSG-Checkout'>Please fill out the form to complete the request</p>
+            <p className='MSG-Checkout-add-address'>Please fill out the form to complete the request</p>
               <input required onChange={(e) => setName(e.target.value)} value={name || ''} type='text' placeholder='Full Name'></input>
-              <input required onChange={(e) => setPhone(e.target.value)} value={phone || ''} type='text' placeholder='Phone Number'></input>
+              <input required onChange={(e) => setPhone(e.target.value)} value={phone || ''} type='number' placeholder='Phone Number'></input>
               <input required onChange={(e) => setCity(e.target.value)}  value={city || ''} type='text' placeholder='City'></input>
               <textarea required onChange={(e) => setAdress(e.target.value)}  value={adress || ''} className='adressInput' type='text' placeholder='Add Yur Adress'></textarea>
 
@@ -290,6 +290,7 @@ if(isHrer){
           {/*Prices Side */}
           <div className='Prices-side'>
             <p>ORDER DETAILS</p>
+            {error & carList?.length == 0 ? <p className='errorMSG'>Add Item to cart</p> : null}
             <div className='containerPrices'>
 
 

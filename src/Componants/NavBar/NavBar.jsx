@@ -9,9 +9,9 @@ import Bar from './Bar'
 export default function NavBar() {
 
 
-const [word,setWord]=useState()
+
   const cartList = useSelector(state => state.ReducerUser.Cart)
-  const WishList = useSelector(state => state.ReducerUser.WishList)
+
   return (
     <>
     <Bar/>
