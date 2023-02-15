@@ -5,6 +5,7 @@ const INITIAL_STATE = {
 OrderAdmin:localStorage.getItem("OrderAdmin")
 ? JSON.parse(localStorage.getItem("OrderAdmin"))
 : [],
+isAuth:false,
 
 }
 
@@ -25,7 +26,11 @@ export const AdminReducer = (state = INITIAL_STATE , action)=>{
             ...state,
             Products:action.payload
          }
-            
+         case 'IS_AUTH':
+          return{
+            ...state,
+            isAuth:action.payload
+         }
 
      default:
         return state;

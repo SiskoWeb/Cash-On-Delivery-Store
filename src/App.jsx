@@ -13,16 +13,38 @@ import Footer from './Componants/Footer/Footer'
 import Test from './Componants/Cart/Test'
 
 import Add from './Admin/AdminPages/PageAddProduct/Add'
-
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import PageProducts from './Admin/AdminPages/PageProducts/PageProducts'
 
 import PageOrders from './Admin/AdminPages/PageOrders/PageOrders'
 import PageOrderDetails from './Admin/AdminPages/PageOrderDetails/PageOrderDetails'
+import LoginAdmin from './Admin/AdminPages/LoginAdmin/LoginAdmin'
+import { useDispatch, useSelector } from 'react-redux';
 function App() {
-
-
+  const Dispatch = useDispatch()
+  const isAuth = useSelector(state => state.AdminReducer.isAuth)
   // <NavBar />
 
+useEffect(()=>{
+  const auth = getAuth();
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+console.log('yes admin login')
+
+      // ...
+    } else {
+      console.log('no admin login')
+      /Dispatch({
+        type:'IS_AUTH',
+        payload:false
+      })
+    }
+  });
+
+
+  console.log(isAuth)
+},[])
+  
   return (
     <div className="App">
 
@@ -38,10 +60,11 @@ function App() {
           <Route path='/thanks' element={<Thankyou />} />
           <Route path='/product/:id' element={<ProductPage />} />
           <Route path='*' element={<h1>no page here go home</h1>} />
-          <Route path='/addproduct' element={<Add/>} />
-          <Route path='/admin' element={<PageOrders/>} />
-          <Route path='/products' element={<PageProducts/>} />
-          <Route path='/orders/:id' element={<PageOrderDetails/>} />
+          <Route path='/addproduct' element={isAuth?<Add/>:<LoginAdmin/>} />
+          <Route path='/admin' element={isAuth?<PageOrders/>:<LoginAdmin/>} />
+          <Route path='/products' element={isAuth?<PageProducts/>:<LoginAdmin/>}/>
+          <Route path='/orders/:id' element={isAuth?<PageOrderDetails/>:<LoginAdmin/>} />
+          <Route path='/login' element={isAuth?<PageOrders/>:<LoginAdmin/>} />
 
           
 
