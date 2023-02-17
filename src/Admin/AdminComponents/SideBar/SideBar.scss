@@ -4,6 +4,8 @@
 }
 
 .new-sideBar{
+    transition: all 0.3s linear;
+    transition:  0.3s display;
     height: 100vh;
     width: 200px;
 align-items: safe;
@@ -11,6 +13,8 @@ align-items: safe;
     position: absolute;
     top: 0;
     left: 0;
+    display: flex;
+    flex-direction: column;
     
 .title-sideBar{
     padding: 20px;
@@ -51,10 +55,16 @@ display: none;
 display: flex;
 align-items: center;
 gap: 20px;
+transition: all 0.3s linear;
+transition:  0.3s display;
 }
 
 .title-sideBar{
     display: flex;
     gap: 10px;
 
+}
+
+.toggle-admin{
+    cursor: pointer;
 }

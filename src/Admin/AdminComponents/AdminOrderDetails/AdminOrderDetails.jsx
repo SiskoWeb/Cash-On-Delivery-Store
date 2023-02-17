@@ -22,6 +22,7 @@ export default function AdminOrderDetails() {
 
     const idOrder = useParams()
 
+    const OrdersAdmin = useSelector(state => state.AdminReducer.OrderAdmin)
     useEffect(() => {
 
         Dispatch(GetOrders())
@@ -30,24 +31,24 @@ export default function AdminOrderDetails() {
 
     }, [update])
 
-    const OrdersAdmin = useSelector(state => state.AdminReducer.OrderAdmin)
 
     useEffect(() => {
 
 
-        setOneOrderbyID(OrdersAdmin.find(i => i.OrderId === idOrder.id));
-
+        setOneOrderbyID(OrdersAdmin.filter((item)=>item.OrderId === +idOrder.id))
+      
 
     }, [OrdersAdmin])
 
 
+    console.log(oneOrderbyID[0]?.OrderId)
 
 
     //-------- Update Status -----------------
     const updateSTATUS = async (e) => {
         e.preventDefault();
 
-        updateDoc(doc(db, "Orders", oneOrderbyID?.id), {
+        updateDoc(doc(db, "Orders", oneOrderbyID[0]?.id), {
             status: statusOrder
         })
         setUpdate(!update)
@@ -65,10 +66,10 @@ export default function AdminOrderDetails() {
 
                 {/*========= Ordered Items  START   */}
                 <div className='ordered-items'>
-                    <div className='title-cards'>  <h2 class="mini-title-add-product">Ordered <span>#{oneOrderbyID?.OrderId}</span></h2>
+                    <div className='title-cards'>  <h2 class="mini-title-add-product">Ordered <span>#{oneOrderbyID[0]?.OrderId}</span></h2>
                         <h2 class="mini-title-add-product status-order">
 
-                         {oneOrderbyID?.status === 'Canceld' ?<p className='Canceld-statue'>Canceld</p> : oneOrderbyID?.status === 'Shipped' ?<p className='shipped-statue'>Shipped</p>: <p  className='Processing-statue'>Processing</p>}
+                         {oneOrderbyID[0]?.status === 'Canceld' ?<p className='Canceld-statue'>Canceld</p> : oneOrderbyID[0]?.status === 'Shipped' ?<p className='shipped-statue'>Shipped</p>: <p  className='Processing-statue'>Processing</p>}
                                 </h2></div>
                     <hr class="light-grey-hr"></hr>
 
@@ -86,7 +87,7 @@ export default function AdminOrderDetails() {
                                 </tr>
                             </thead>
                             <tbody>
-{oneOrderbyID?.Products?.length >= 1? oneOrderbyID?.Products?.map((i)=><CardOrderItem  data={i}/> ):<p>there is no items</p>}
+{oneOrderbyID[0]?.Products?.length >= 1? oneOrderbyID[0]?.Products?.map((i)=><CardOrderItem  data={i}/> ):<p>there is no items</p>}
                                 
                      
 
@@ -94,7 +95,7 @@ export default function AdminOrderDetails() {
                         </table>
                     </div>
                     <div className='total-price-order-detailes'>
-                        <div>Total:</div> <div>${Math.round(oneOrderbyID?.totalOrder * 1).toFixed(2)}</div>
+                        <div>Total:</div> <div>${Math.round(oneOrderbyID[0]?.totalOrder * 1).toFixed(2)}</div>
 
                     </div>
 
@@ -130,11 +131,11 @@ export default function AdminOrderDetails() {
                     <hr class="light-grey-hr"></hr>
 
                     <div className='customer-detailes'>
-                        <p><i class="fa-solid fa-user"></i> {OrdersAdmin[0]?.shippingInfo[0]?.name}</p>
-                        <p><i class="fa-solid fa-phone-flip"></i> {OrdersAdmin[0]?.shippingInfo[0]?.phone}</p>
+                        <p><i class="fa-solid fa-user"></i> {oneOrderbyID[0]?.shippingInfo[0]?.name}</p>
+                        <p><i class="fa-solid fa-phone-flip"></i> {oneOrderbyID[0]?.shippingInfo[0]?.phone}</p>
 
-                        <p><i class="fa-solid fa-tree-city"></i> {OrdersAdmin[0]?.shippingInfo[0]?.city}</p>
-                        <p><i class="fa-solid fa-location-dot"></i> {OrdersAdmin[0]?.shippingInfo[0]?.adress}</p>
+                        <p><i class="fa-solid fa-tree-city"></i> {oneOrderbyID[0]?.shippingInfo[0]?.city}</p>
+                        <p><i class="fa-solid fa-location-dot"></i> {oneOrderbyID[0]?.shippingInfo[0]?.adress}</p>
 
                     </div>
                 </div>
@@ -151,14 +152,14 @@ export default function AdminOrderDetails() {
 
 function CardOrderItem({data}) {
     return (
-        <tr key={data.Cart.id}>
-            <td className='img-items-ordered'><img src={data?.Cart.image[0]}></img></td>
-            <td className=''><p>{data?.Cart.name}</p></td>
+        <tr key={data?.Cart?.id}>
+            <td className='img-items-ordered'><img src={data?.Cart?.image[0]}></img></td>
+            <td className=''><p>{data?.Cart?.name}</p></td>
 
-            <td className=''><p>${Math.round(data?.Cart.price * 1).toFixed(2)} x {data?.quntity}   </p></td>
+            <td className=''><p>${Math.round(data?.Cart?.price * 1).toFixed(2)} x {data?.quntity}   </p></td>
 
     
-            <td className=''><p>$        {Math.round(data?.Cart.price * data?.quntity * 1).toFixed(2)} </p></td>
+            <td className=''><p>$        {Math.round(data?.Cart?.price * data?.quntity * 1).toFixed(2)} </p></td>
 
         </tr>
     )

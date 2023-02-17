@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { NavLink} from 'react-router-dom'
 import './SideBar.scss'
 export default function SideBar() {
-  const [toggle,setToggle]=useState(false)
+  const [toggle,setToggle]=useState(true)
   const toggleFun =()=>{
     toggle? document.getElementById('new-sideBar').classList.add('mobile-sidebar'): document.getElementById('new-sideBar').classList.remove('mobile-sidebar')  
     setToggle(!toggle)
@@ -13,8 +13,8 @@ export default function SideBar() {
   
 
   return (
-    <div className='new-sideBar ' id='new-sideBar'>
-    <div className='title-sideBar'><p> Dashboard    </p>   <div className='icon-bar-admin'>  <i onClick={()=>toggleFun()} class="fa-solid fa-bars"></i></div>
+    <div className='new-sideBar  mobile-sidebar' id='new-sideBar'>
+    <div className='title-sideBar'><p> Dashboard    </p>   <div className='icon-bar-admin'>  <i onClick={()=>toggleFun()} class="toggle-admin fa-solid fa-bars"></i></div>
     </div>
 
     <div className='list-Links-sideBar'> <ul>

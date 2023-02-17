@@ -10,7 +10,7 @@ export default function AdminNavBar() {
   const Dispatch = useDispatch()
   const navigator = useNavigate()
 
-const [toggle,setToggle]=useState(false)
+  const [toggle,setToggle]=useState(false)
 
 
   const Signout = () => {
@@ -40,7 +40,7 @@ const [toggle,setToggle]=useState(false)
   return (
 
     <div className='AdminNavBar'>
-      <div className='icon-bar-admin'>  <i onClick={()=>toggleFun()} class="fa-solid fa-bars"></i></div>
+      <div className='icon-bar-admin'>  <i onClick={()=>toggleFun()} class="toggle-admin fa-solid fa-bars"></i></div>
 
       <button onClick={() => Signout()}>Logout</button>
     </div>

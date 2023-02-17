@@ -34,10 +34,10 @@ console.log('yes admin login')
       // ...
     } else {
       console.log('no admin login')
-      Dispatch({
-        type:'IS_AUTH',
-        payload:false
-      })
+      // Dispatch({
+      //   type:'IS_AUTH',
+      //   payload:false
+      // })
     }
   });
 

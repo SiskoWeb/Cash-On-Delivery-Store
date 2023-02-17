@@ -1,6 +1,7 @@
 import React from 'react'
 import { useEffect ,useState } from 'react'
 import { useDispatch,useSelector } from 'react-redux'
+import NavBar from '../NavBar/NavBar'
 import './Thankyou.css'
 
 export default function Thankyou() {
@@ -17,6 +18,10 @@ useEffect(()=>{
 
 
   return (
+
+    <>
+    <NavBar/>
+  <main>
     <div className='container'>
     <div className='thankyou'>
     <div className='thanksIcon'><i class="fa-solid fa-check"></i></div>
@@ -26,5 +31,6 @@ useEffect(()=>{
 
     </div>
     </div>
+    </main></>
   )
 }
