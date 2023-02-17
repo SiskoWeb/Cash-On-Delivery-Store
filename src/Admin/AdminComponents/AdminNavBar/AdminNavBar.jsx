@@ -14,14 +14,17 @@ export default function AdminNavBar() {
 
 
   const Signout = () => {
+
     const auth = getAuth();
     signOut(auth).then(() => {
 
-      navigator.push('/')
+     
+      localStorage.setItem('isAuth',false)
       Dispatch({
         type:'IS_AUTH',
         payload:false
       })
+      navigator.push('/')
       // Sign-out successful.
     }).catch((error) => {
       // An error happened.

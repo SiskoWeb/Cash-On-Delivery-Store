@@ -29,20 +29,23 @@ useEffect(()=>{
   const auth = getAuth();
   onAuthStateChanged(auth, (user) => {
     if (user) {
-console.log('yes admin login')
 
+Dispatch({
+  type:'IS_AUTH',
+  payload:true
+})
       // ...
     } else {
       console.log('no admin login')
-      // Dispatch({
-      //   type:'IS_AUTH',
-      //   payload:false
-      // })
+       Dispatch({
+        type:'IS_AUTH',
+         payload:false
+       })
     }
   });
 
 
-  console.log(isAuth)
+
 },[])
 
   

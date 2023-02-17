@@ -25,6 +25,7 @@ const login = (e)=>{
             type:'IS_AUTH',
             payload:true
         })
+        localStorage.setItem('isAuth',true)
         navigator('/admin')
         // ...
       })
