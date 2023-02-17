@@ -7,6 +7,9 @@
     display: flex;
 flex-direction: column;
     gap: 20px;
+    .title-list-prodcuts-admin{
+        margin-bottom: 20px;
+    }
 }
 
 
@@ -96,4 +99,39 @@ padding: 5px 10px;
     gap: 40px;
 
     flex-wrap: wrap;
+}
+
+
+@media (max-width:  767.98px) { 
+    .card-product-admin{
+        // width: calc(25% - 10px);
+        transition: all .3s linear;
+        height: 150px;
+        display: flex;
+        width: 150px;
+    flex-direction: column;
+    //    background-color: $color-Card-Pending;
+       align-items: center;
+     gap: 50px;
+       color: white;
+       border-radius: 5px;
+       justify-content: center;
+    
+    }
+    .list-card-products {
+        justify-content: center;
+    }
+
+    .list-prodcuts-admin{
+        background: white;
+        height: 100%;
+        width: 100%;
+        margin-left:0px ;
+        padding: 20px;
+        display: flex;
+    flex-direction: column;
+        gap: 40px;
+        align-items: center;
+  
+    }
 }

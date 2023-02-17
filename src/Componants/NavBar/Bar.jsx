@@ -1,5 +1,6 @@
-import React from 'react'
+import React ,{useMemo} from 'react'
 import './NavBar.scss'
+
 export default function Bar() {
   return (
     <div className='bar'>
@@ -7,3 +8,4 @@ export default function Bar() {
     </div>
   )
 }
+

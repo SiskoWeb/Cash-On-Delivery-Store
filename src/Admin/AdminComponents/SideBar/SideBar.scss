@@ -8,6 +8,10 @@
     width: 200px;
 align-items: safe;
     color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    
 .title-sideBar{
     padding: 20px;
     color: white;
@@ -39,12 +43,18 @@ padding: 0 20px;
 }
 
 
-// .mobile-sidebar{
-// width:50px ;
-
-// }
+.mobile-sidebar{
+position: absolute;
+display: none;
+}
 .link-item-sidebar-admin{
 display: flex;
 align-items: center;
 gap: 20px;
+}
+
+.title-sideBar{
+    display: flex;
+    gap: 10px;
+
 }

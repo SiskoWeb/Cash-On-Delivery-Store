@@ -8,17 +8,22 @@ background-color: #edf1f5;
 display: flex;
 flex-direction: column;
 gap: 30px;
+
 width: 100%;
+background-color: #edf1f5;
 }
 
 
 .admin-Order{
+    padding-left:10px ;
+padding-right:10px ;
     display: flex;
     flex-direction: column;
     gap: 30px;
     background: white;
-    padding: 20px;
-    margin-left:20px ;
+    // padding: 20px;
+
+    width: 100%;
 }
 .card-order-admin{
     display: flex;
@@ -35,11 +40,11 @@ gap: 10px;
 
 .card-order-info{
 
-    width: calc(25% - 20px);
+    width: calc(50% - 20px);
     height: 80px;
     display: flex;
    gap: 50px;
-
+text-align: center;
 //    background-color: $color-Card-Pending;
    align-items: center;
    justify-content: space-around;
@@ -48,8 +53,13 @@ gap: 10px;
    gap: 50PX;
    border-radius: 5px;
    p{
-    font-size: 10px;
 
+    font-size: clamp(5px , 9vw ,15px);
+
+   }
+   h2{
+    
+    font-size: clamp(5px , 9vw ,15px);
    }
    i{
     color: #212529;
@@ -113,6 +123,7 @@ background-color: transparent;
     vertical-align: top;
     border-color: #e9ecef;
     border-collapse: collapse;
+
   }
   tbody, td, th, thead, tr {
     border-color: inherit;
@@ -138,4 +149,30 @@ tbody{
 .edit-order-admin{
     color: #f0c541 !important;
     cursor: pointer;
+}
+
+@media (max-width:  767.98px) { 
+
+    .table-orders {
+        overflow-x: scroll !important;
+           width: 100%;
+        
+        }
+        .table{
+            overflow-x: scroll !important;
+               width: 767.98px;
+            
+            }
+        .admin-Order {
+    
+            margin-left: 0px;
+        }
+        .card-order-admin{
+            display: flex;
+            gap: 10px;
+            color: black;
+            margin-left:20px ;
+
+
+        }
 }
